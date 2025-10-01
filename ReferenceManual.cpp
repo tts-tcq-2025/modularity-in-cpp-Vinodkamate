@@ -3,6 +3,12 @@
 
 namespace TelCoColorCoder
 {
+    void addPadding(int targetWidth, int currentLength) {
+        for (int j = 0; j < (targetWidth - currentLength); j++) {
+            std::cout << " ";
+        }
+    }
+
     void PrintColorCodingReferenceManual() {
         std::cout << "\n=== Telecommunication Color Coding Reference Manual ===" << std::endl;
         std::cout << "Pair Number | Major Color | Minor Color | Color Pair Name" << std::endl;
@@ -14,19 +20,11 @@ namespace TelCoColorCoder
             if (i < 10) std::cout << " ";
             std::cout << "     |    " << MajorColorNames[colorPair.getMajor()];
             
-            // Add padding for alignment
-            int majorLen = std::string(MajorColorNames[colorPair.getMajor()]).length();
-            for (int j = 0; j < (8 - majorLen); j++) {
-                std::cout << " ";
-            }
+            addPadding(8, std::string(MajorColorNames[colorPair.getMajor()]).length());
             
             std::cout << "|    " << MinorColorNames[colorPair.getMinor()];
             
-            // Add padding for alignment  
-            int minorLen = std::string(MinorColorNames[colorPair.getMinor()]).length();
-            for (int j = 0; j < (8 - minorLen); j++) {
-                std::cout << " ";
-            }
+            addPadding(8, std::string(MinorColorNames[colorPair.getMinor()]).length());
             
             std::cout << "| " << colorPair.ToString() << std::endl;
         }
